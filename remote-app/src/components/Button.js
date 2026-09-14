@@ -1,5 +1,13 @@
 import React from 'react';
 export default function Button(){
+
+  const handleClick=()=>{
+    window.dispatchEvent(
+      new CustomEvent("remote-button-clicked", {
+        detail: { message: "Remote button clicked!" },
+      })
+    )
+  }
     return  <button
       style={{
         background: "#6a1b9a",
@@ -10,7 +18,7 @@ export default function Button(){
         fontSize: "16px",
         cursor: "pointer",
       }}
-      onClick={() => alert("Yeh button REMOTE app se aaya hai!")}
+      onClick={handleClick}
     >
       Remote Button 🚀
     </button>

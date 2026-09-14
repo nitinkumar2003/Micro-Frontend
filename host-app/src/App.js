@@ -1,28 +1,8 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-
-const RemoteButton = React.lazy(() => import("remoteApp/Button"));
-const RemoteHeader = React.lazy(() => import("remoteApp/Header"));
-
-function HomePage() {
-  return <h2>Home Page (Host App)</h2>;
-}
-
-function ButtonPage() {
-  return (
-    <Suspense fallback={<p>Loading button...</p>}>
-      <RemoteButton />
-    </Suspense>
-  );
-}
-
-function HeaderPage() {
-  return (
-    <Suspense fallback={<p>Loading header...</p>}>
-      <RemoteHeader />
-    </Suspense>
-  );
-}
+import HomePage from "./pages/HomePage";
+import ButtonPage from "./pages/ButtonPage";
+import HeaderPage from "./pages/HeaderPage";
 
 export default function App() {
   return (

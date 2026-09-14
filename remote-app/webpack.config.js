@@ -6,8 +6,8 @@ module.exports = {
   devServer: {
     port: 3001,
     headers: {
-    "Access-Control-Allow-Origin": "*",
-  },
+      "Access-Control-Allow-Origin": "*",
+    },
   },
   module: {
     rules: [
@@ -28,9 +28,10 @@ module.exports = {
       name: "remoteApp",
       filename: "remoteEntry.js",
       exposes: {
-        "./Button": "./src/Button",
-        "./Header": "./src/Header",
+        "./Button": "./src/components/Button",
+        "./Header": "./src/components/Header",
       },
+
       shared: {
         react: { singleton: true },
         "react-dom": { singleton: true },
