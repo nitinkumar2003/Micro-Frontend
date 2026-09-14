@@ -4,7 +4,8 @@ const { ModuleFederationPlugin } = require('webpack').container;
 module.exports = {
   mode: "development",
   devServer: {
-    port: 3000
+    port: 3000,
+    historyApiFallback: true
   },
   module: {
     rules: [

@@ -1,4 +1,5 @@
 import React, { Suspense } from "react";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 const RemoteButton = React.lazy(() => import("remoteApp/Button"));
 
@@ -13,9 +14,11 @@ export default function ButtonPage() {
 
   return (
     <div>
-      <Suspense fallback={<p>Loading button...</p>}>
-        <RemoteButton />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<p>Loading button...</p>}>
+          <RemoteButton />
+        </Suspense>
+      </ErrorBoundary>
       {message && (
         <p style={{ marginTop: 20, color: "green" }}>
           Host ko mila: "{message.message}"
