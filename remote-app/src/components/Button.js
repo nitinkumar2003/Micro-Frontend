@@ -1,14 +1,8 @@
 import React from 'react';
-export default function Button(){
 
-  const handleClick=()=>{
-    window.dispatchEvent(
-      new CustomEvent("remote-button-clicked", {
-        detail: { message: "Remote button clicked!" },
-      })
-    )
-  }
-    return  <button
+export default function Button({ label, onButtonClick }) {
+  return (
+    <button
       style={{
         background: "#6a1b9a",
         color: "white",
@@ -18,8 +12,9 @@ export default function Button(){
         fontSize: "16px",
         cursor: "pointer",
       }}
-      onClick={handleClick}
+      onClick={onButtonClick}
     >
-      Remote Button 🚀
+      {label}
     </button>
+  );
 }

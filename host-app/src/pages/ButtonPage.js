@@ -4,26 +4,25 @@ import ErrorBoundary from "../components/ErrorBoundary";
 const RemoteButton = React.lazy(() => import("remoteApp/Button"));
 
 export default function ButtonPage() {
-  const [message, setMessage] = React.useState(null);
+  const [count, setCount] = React.useState(0);
 
-  React.useEffect(() => {
-    const handler = (e) => setMessage(e.detail);
-    window.addEventListener("remote-button-clicked", handler);
-    return () => window.removeEventListener("remote-button-clicked", handler);
-  }, []);
+  const handleClick = () => {
+    setCount((prev) => prev + 1);
+  };
 
   return (
     <div>
       <ErrorBoundary>
         <Suspense fallback={<p>Loading button...</p>}>
-          <RemoteButton />
+          <RemoteButton
+            label={`Clicked ${count} times 🚀`}
+            onButtonClick={handleClick}
+          />
         </Suspense>
       </ErrorBoundary>
-      {message && (
-        <p style={{ marginTop: 20, color: "green" }}>
-          Host ko mila: "{message.message}"
-        </p>
-      )}
+      <p style={{ marginTop: 20, color: "green" }}>
+        Host ka count: {count}
+      </p>
     </div>
   );
 }
