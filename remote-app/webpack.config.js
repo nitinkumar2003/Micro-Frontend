@@ -30,11 +30,13 @@ module.exports = {
       exposes: {
         "./Button": "./src/components/Button",
         "./Header": "./src/components/Header",
+        './store':"./src/store/useCounterStore"
       },
 
       shared: {
         react: { singleton: true },
         "react-dom": { singleton: true },
+        zustand: { singleton: true },
       },
     }),
     new HtmlWebpackPlugin({
