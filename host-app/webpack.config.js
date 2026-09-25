@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 
@@ -25,12 +27,13 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'hostApp',
       remotes: {
-        remoteApp: 'remoteApp@http://localhost:3001/remoteEntry.js'
+        remoteApp: `remoteApp@${process.env.REMOTE_URL}`
       },
       shared: {
-         react: { singleton: true },
-          'react-dom': { singleton: true },
-           zustand: { singleton: true } }
+        react: { singleton: true },
+        'react-dom': { singleton: true },
+        zustand: { singleton: true }
+      }
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html'
